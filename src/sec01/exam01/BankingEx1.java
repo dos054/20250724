@@ -3,17 +3,50 @@ package sec01.exam01;
 import java.util.Scanner;
 
 class BankAccount {
-	String name = "홍길동";
-	String account = "H1234";
-	int balance = 0;
+	private String name;
+	private String account;
+	private int balance;
 	
-	void deposit(int num) { // 입금 기능
-		balance += num;
+	public BankAccount(String name, String account, int balance) {
+		this.name = name;
+		this.account = account;
+		this.balance = balance;
+	}
+
+	void deposit(int balance) { // 입금 기능
+		this.balance += balance;
 	}
 	
-	void withdraw(int num) {  // 출금 기능
-		balance -= num;
+	void withdraw(int balance) {  // 출금 기능
+		this.balance -= balance;
 	}
+
+	public String getName() {
+		return name;
+	}
+
+	public void setName(String name) {
+		this.name = name;
+	}
+
+	public String getAccount() {
+		return account;
+	}
+
+	public void setAccount(String account) {
+		this.account = account;
+	}
+
+	public int getBalance() {
+		return balance;
+	}
+
+	public void setBalance(int balance) {
+		this.balance = balance;
+	}
+	
+	
+	
 }
 
 
@@ -27,7 +60,7 @@ public class BankingEx1 {
 //		int balance = 0;
 		Scanner scanner = new Scanner(System.in);
 		
-		BankAccount ba = new BankAccount();
+		BankAccount ba = new BankAccount("홍길동", "H1234", 10000);
 		
 		while (run) {
 			if (!login) {
@@ -42,7 +75,7 @@ public class BankingEx1 {
 					String str1 = scanner.nextLine();
 					System.out.print("계정>");
 					String str2 = scanner.nextLine();
-					if (str1.equals(ba.name) && str2.equals(ba.account)) {
+					if (str1.equals(ba.getName()) && str2.equals(ba.getAccount())) {
 						System.out.println("로그인 성공");
 						login = true;
 					} else {
@@ -51,9 +84,11 @@ public class BankingEx1 {
 					break;
 				case 2:
 					System.out.print("이름>");
-					ba.name = scanner.nextLine();
+//					ba.name = scanner.nextLine();
+					ba.setName(scanner.nextLine());
 					System.out.print("계정>");
-					ba.account = scanner.nextLine();
+//					ba.account = scanner.nextLine();
+					ba.setAccount(scanner.nextLine());
 					break;
 				case 3:
 					run = false;
@@ -83,7 +118,7 @@ public class BankingEx1 {
 					ba.withdraw(num);
 					break;
 				case 3:
-					System.out.println("잔고>"+ba.balance);
+					System.out.println("잔고>"+ba.getBalance());
 					break;
 				case 4:
 					run = false;

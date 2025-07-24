@@ -102,39 +102,39 @@ class MyFrame extends JFrame implements ActionListener {
 	@Override
 	public void actionPerformed(ActionEvent e) {
 		if (e.getSource() == jb4) {
-			if (name.equals(jt2.getText()) && account.equals(jt3.getText())) {
+			if(jt2.getText().equals(name) && jt3.getText().equals(account)) {
 				JOptionPane.showMessageDialog(this, name+"님이 로그인했습니다.");
-				lab5.setText(name+"님 로그인 상태");
+				lab5.setText(name + "로그인 상태입니다.");
 				login = true;
 			}
 		}
+		
 		if (e.getSource() == jb5) {
 			name = jt2.getText();
 			account = jt3.getText();
 			JOptionPane.showMessageDialog(this, name+"님이 회원 가입을 했습니다.");
 		}
 		
-		
 		if (!login) {
 			JOptionPane.showMessageDialog(this, "로그인 하세요!");
 			return;
-		}
-		
-		if (e.getSource() == jb1) {
-			int money = Integer.parseInt(jt1.getText());
-			balance += money;
-			lab2.setText("잔고: " + balance + "원");
-			jt1.setText("");
-		} else if (e.getSource() == jb2) {
-			int money = Integer.parseInt(jt1.getText());
-			balance -= money;
-			lab2.setText("잔고: " + balance + "원");
-			jt1.setText("");
-		}else if (e.getSource() == jb3) {
-//			JOptionPane.showInputDialog("이름 입력");
-//			JOptionPane.showMessageDialog(this, "연습");
-			int ret = JOptionPane.showConfirmDialog(this, "확인");
-			System.out.println(ret);
+		}else {
+			if (e.getSource() == jb1) {
+				int money = Integer.parseInt(jt1.getText());
+				balance += money;
+				lab2.setText("잔고: " + balance + "원");
+				jt1.setText("");
+			} else if (e.getSource() == jb2) {
+				int money = Integer.parseInt(jt1.getText());
+				balance -= money;
+				lab2.setText("잔고: " + balance + "원");
+				jt1.setText("");
+			}else if (e.getSource() == jb3) {
+//				JOptionPane.showInputDialog("이름 입력");
+//				JOptionPane.showMessageDialog(this, "연습");
+				int ret = JOptionPane.showConfirmDialog(this, "확인");
+				System.out.println(ret);
+			}
 		}
 		
 	}
